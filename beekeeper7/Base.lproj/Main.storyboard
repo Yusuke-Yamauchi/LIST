@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yxw-Ov-htM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qDB-g2-6sX">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,6 +25,15 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="HuF-Vc-Vzz" kind="show" id="6eK-ZS-eeq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3H5-qO-xoK" colorLabel="IBBuiltInLabel-Purple">
+                                <rect key="frame" x="46" y="577" width="104" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="カメラ"/>
+                                <connections>
+                                    <segue destination="ZLw-fB-emm" kind="show" id="Swb-cj-WPF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -174,6 +183,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dby-1w-fKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-161" y="127"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="FoE-P8-RRR">
+            <objects>
+                <viewController id="ZLw-fB-emm" customClass="CameraViewController" customModule="beekeeper7" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eJo-yD-Mrf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vWO-oz-XwA">
+                                <rect key="frame" x="40" y="118" width="334" height="594"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOz-wU-7jo">
+                                <rect key="frame" x="40" y="742" width="334" height="30"/>
+                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wVZ-Zl-iqN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="カメラを起動"/>
+                                <connections>
+                                    <action selector="cameraButton:" destination="ZLw-fB-emm" eventType="touchUpInside" id="vP5-pV-ABs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="let-7E-WqI">
+                                <rect key="frame" x="40" y="802" width="334" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="bLc-Un-veJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="SNS投稿"/>
+                                <connections>
+                                    <action selector="snsBUtton:" destination="ZLw-fB-emm" eventType="touchUpInside" id="sgt-yI-9Rz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hOz-wU-7jo" firstAttribute="leading" secondItem="t8Y-Gr-n14" secondAttribute="leading" constant="40" id="0A1-fu-FMW"/>
+                            <constraint firstItem="vWO-oz-XwA" firstAttribute="leading" secondItem="t8Y-Gr-n14" secondAttribute="leading" constant="40" id="2kt-0a-1V5"/>
+                            <constraint firstItem="t8Y-Gr-n14" firstAttribute="bottom" secondItem="let-7E-WqI" secondAttribute="bottom" constant="30" id="9wa-AW-dsg"/>
+                            <constraint firstItem="t8Y-Gr-n14" firstAttribute="trailing" secondItem="vWO-oz-XwA" secondAttribute="trailing" constant="40" id="Mue-H8-qHf"/>
+                            <constraint firstItem="t8Y-Gr-n14" firstAttribute="trailing" secondItem="let-7E-WqI" secondAttribute="trailing" constant="40" id="OL1-04-5xW"/>
+                            <constraint firstItem="let-7E-WqI" firstAttribute="top" secondItem="hOz-wU-7jo" secondAttribute="bottom" constant="30" id="ONc-fc-Ah0"/>
+                            <constraint firstItem="vWO-oz-XwA" firstAttribute="top" secondItem="t8Y-Gr-n14" secondAttribute="top" constant="30" id="Tbc-Rz-YJn"/>
+                            <constraint firstItem="hOz-wU-7jo" firstAttribute="top" secondItem="vWO-oz-XwA" secondAttribute="bottom" constant="30" id="dAU-66-Ggy"/>
+                            <constraint firstItem="let-7E-WqI" firstAttribute="leading" secondItem="t8Y-Gr-n14" secondAttribute="leading" constant="40" id="nK4-Jd-aOG"/>
+                            <constraint firstItem="t8Y-Gr-n14" firstAttribute="trailing" secondItem="hOz-wU-7jo" secondAttribute="trailing" constant="40" id="sKa-7N-soD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="t8Y-Gr-n14"/>
+                    </view>
+                    <connections>
+                        <outlet property="CameraImage" destination="vWO-oz-XwA" id="vf2-C5-GfO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EMa-i6-vIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-165.21739130434784" y="791.51785714285711"/>
         </scene>
     </scenes>
 </document>
