@@ -9,7 +9,7 @@
 import UIKit
 
 class AddViewController: UIViewController,UITextFieldDelegate {
-
+    
     
     @IBOutlet weak var dateTextField: UITextField!
     
@@ -17,6 +17,7 @@ class AddViewController: UIViewController,UITextFieldDelegate {
     
     //タイトルと本文の配列 配列の中身が辞書になっている
     var days: [[String: Any]] = []
+    
     
     
     override func viewDidLoad() {
@@ -27,12 +28,12 @@ class AddViewController: UIViewController,UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
-
+    
     @IBAction func addButton(_ sender: UIButton) {
         
         //タイトルが入力されなかったとき
         if dateTextField.text == "" {
-            showAlert(message: "内容を入力してください")
+            showAlert(message: "本文を入力してください")
             
             //タイトルが入力されたとき  タイトル用と本文用の変数をつくる
         }else {
@@ -75,8 +76,20 @@ class AddViewController: UIViewController,UITextFieldDelegate {
         
         
         
-     
+        
     }
+    
+    
+    @IBAction func modoruButton(_ sender: Any) {
+        //dismissで画面を戻るとviewDidLoadは反応しないからviewWillAppearを使う
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
     
     // アラートを出す関数
     //使うときはshowAlert(message: "表示したいメッセージ")とかけばいい
@@ -95,13 +108,13 @@ class AddViewController: UIViewController,UITextFieldDelegate {
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

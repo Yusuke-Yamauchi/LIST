@@ -44,7 +44,18 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // どの行をタップしたかindexPathの値で受け取り、switchで判別。アプリ内にテキストを保存。
+        switch indexPath.row {
+        case 0: UserDefaults.standard.set("line1", forKey: "judge" )
+        case 1: UserDefaults.standard.set("line2", forKey: "judge" )
+        case 2: UserDefaults.standard.set("line3", forKey: "judge" )
+        default: break
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
