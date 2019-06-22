@@ -13,6 +13,14 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//行の追加
+        
+//        self.tableView.beginUpdates()
+//        self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)],
+//                                  with: .automatic)
+//        self.tableView.endUpdates()
+//
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -20,6 +28,19 @@ class TableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,9 +56,9 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "aaa")
-        cell.textLabel?.text = "ラベルだよ"
-        cell.detailTextLabel?.text = "詳細なメッセージだよ"
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
+        cell.textLabel?.text = "ラベル"
+        cell.detailTextLabel?.text = "本文"
         cell.imageView?.image = UIImage(named: "1")
         // Configure the cell...
 

@@ -10,8 +10,37 @@ import UIKit
 
 class AddViewController: UIViewController,UITextFieldDelegate {
     
+   
+    @IBAction func dateButton(_ sender: Any) {
+        date.isHidden = false
+        
+    }
     
-    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var dateButton: UIButton!
+    
+    
+    @IBAction func dateClose(_ sender: Any) {
+        dateButton.setTitle(dateChecker, for: .normal)
+        
+        dateButton.setTitleColor(UIColor.black, for: .normal)
+        
+        date.isHidden = true
+        
+    }
+    
+    @IBOutlet weak var date: UIDatePicker!
+    
+    var dateChecker : String = ""
+    
+    @IBAction func date(_ sender: Any) {
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "yyyy年mm月dd日 HH:mm"
+        
+        dateChecker = formatter.string(from: (sender as AnyObject).date)
+        
+    }
+    
     
     @IBOutlet weak var memoTextField: UITextField!
     
@@ -22,7 +51,7 @@ class AddViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateTextField.delegate = self
+      //  dateTextField.delegate = self
         memoTextField.delegate = self
         
         // Do any additional setup after loading the view.
@@ -32,13 +61,12 @@ class AddViewController: UIViewController,UITextFieldDelegate {
     @IBAction func addButton(_ sender: UIButton) {
         
         //タイトルが入力されなかったとき
-        if dateTextField.text == "" {
+        if dateChecker.isEmpty{
             showAlert(message: "本文を入力してください")
-            
             //タイトルが入力されたとき  タイトル用と本文用の変数をつくる
         }else {
             //タイトルが入力されたものを変数に格納
-            var date = dateTextField.text!
+            var date = dateChecker
             
             //本文が入る変数
             var honbun = memoTextField.text!
@@ -58,7 +86,7 @@ class AddViewController: UIViewController,UITextFieldDelegate {
                 days.append(["title": date, "naiyou": honbun])
                 
                 //追加したら入力画面は空にする
-                dateTextField.text = ""
+              //  dateTextField.text = ""
                 memoTextField.text = ""
                 
                 

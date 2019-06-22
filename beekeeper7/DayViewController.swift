@@ -13,7 +13,7 @@ class DayViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     var dayTable: UITableView!
     
-    let userDefaults = UserDefaults.standard
+    //let userDefaults = UserDefaults.standard
     
     //タイトルと本文の配列 配列の中身が辞書になっている
     var days: [[String: Any]] = []
@@ -56,7 +56,7 @@ class DayViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     
@@ -76,10 +76,11 @@ class DayViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
            //        呼び出すのはインデックスパスのrow番目
         //cell.textLabel?.text = resultArray[indexPath.row]
         
-        cell.textLabel?.text = ""
+      //  let que = days["title"] as? [[String : Any]]
         
+        cell.textLabel?.text = "日時"
         
-        cell.detailTextLabel?.text = "詳細なメッセージだよ"
+        cell.detailTextLabel?.text = "本文"
         
         
         cell.imageView?.image = UIImage(named: "1")
