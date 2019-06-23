@@ -31,6 +31,8 @@ class AddViewController: UIViewController,UITextFieldDelegate, UIImagePickerCont
         openPicker(type: .camera)
     }
     
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
         if UserDefaults.standard.object(forKey: "list") == nil {
             print("dame")
@@ -180,6 +182,8 @@ class AddViewController: UIViewController,UITextFieldDelegate, UIImagePickerCont
         present(alert, animated: true, completion: nil)
         
     }
+    
+    
     
     func openPicker(type: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(type) else { return }
