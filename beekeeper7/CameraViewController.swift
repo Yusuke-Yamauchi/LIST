@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import AVFoundation
+import Photos
 
-class CameraViewController: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
-
+class CameraViewController: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate, AVCaptureFileOutputRecordingDelegate  {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-
+    
     @IBOutlet weak var CameraImage: UIImageView!
     
     //カメラを起動
@@ -50,14 +52,51 @@ class CameraViewController: UIViewController,UINavigationControllerDelegate,UIIm
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         CameraImage.image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //    録画完了時に自動的に呼ばれる・AVCaptureFileOutputRecordingDelegate が実装を必須にしているモノ
+    //    フォトライブラリーに保存
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        PHPhotoLibrary.shared().performChanges({
+            PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: outputFileURL)
+        }) { (completed, error) in
+            if completed{
+                print("保存したよ！")
+            }
+        }
     }
-    */
-
+    
+    
+    
+    
+    
+    
+    // アラートを出す関数
+    //使うときはshowAlert(message: "表示したいメッセージ")とかけばいい
+    func showAlert(message: String) {
+        
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let close = UIAlertAction(title: "とじる", style: .cancel , handler: nil)
+        alert.addAction(close)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

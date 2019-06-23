@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		2CB08C0F22BB51D300652EB7 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB08C0E22BB51D300652EB7 /* DayViewController.swift */; };
 		2CB08C1122BB51E800652EB7 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB08C1022BB51E800652EB7 /* AddViewController.swift */; };
 		2CF787A222BBB0F60058DC1E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF787A122BBB0F60058DC1E /* CameraViewController.swift */; };
+		2CF787A622BDB33E0058DC1E /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF787A522BDB33E0058DC1E /* DayTableViewCell.swift */; };
+		2CF787A822BDC3E10058DC1E /* ViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF787A722BDC3E10058DC1E /* ViewViewController.swift */; };
 		B31912E5DD05F2EB7C883C52 /* Pods_beekeeper7.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5F096B36CC58F89798198D /* Pods_beekeeper7.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		2CB08C0E22BB51D300652EB7 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
 		2CB08C1022BB51E800652EB7 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		2CF787A122BBB0F60058DC1E /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		2CF787A522BDB33E0058DC1E /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
+		2CF787A722BDC3E10058DC1E /* ViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewViewController.swift; sourceTree = "<group>"; };
 		687BC55225FBF92F9CC822A7 /* Pods-beekeeper7.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beekeeper7.debug.xcconfig"; path = "Target Support Files/Pods-beekeeper7/Pods-beekeeper7.debug.xcconfig"; sourceTree = "<group>"; };
 		BDE8173072BCFCA94801251F /* Pods-beekeeper7.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beekeeper7.release.xcconfig"; path = "Target Support Files/Pods-beekeeper7/Pods-beekeeper7.release.xcconfig"; sourceTree = "<group>"; };
 		EA5F096B36CC58F89798198D /* Pods_beekeeper7.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beekeeper7.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,7 +58,6 @@
 				687BC55225FBF92F9CC822A7 /* Pods-beekeeper7.debug.xcconfig */,
 				BDE8173072BCFCA94801251F /* Pods-beekeeper7.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -85,6 +88,8 @@
 				2CB08C0E22BB51D300652EB7 /* DayViewController.swift */,
 				2CB08C1022BB51E800652EB7 /* AddViewController.swift */,
 				2CF787A122BBB0F60058DC1E /* CameraViewController.swift */,
+				2CF787A722BDC3E10058DC1E /* ViewViewController.swift */,
+				2CF787A522BDB33E0058DC1E /* DayTableViewCell.swift */,
 				2CB08BFE22BB48B700652EB7 /* Main.storyboard */,
 				2CB08C0122BB48B800652EB7 /* Assets.xcassets */,
 				2CB08C0322BB48B800652EB7 /* LaunchScreen.storyboard */,
@@ -216,10 +221,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CF787A622BDB33E0058DC1E /* DayTableViewCell.swift in Sources */,
 				2CB08C1122BB51E800652EB7 /* AddViewController.swift in Sources */,
 				2CB08BFD22BB48B700652EB7 /* ViewController.swift in Sources */,
 				2CB08C0D22BB519100652EB7 /* TableViewController.swift in Sources */,
 				2CB08BFB22BB48B700652EB7 /* AppDelegate.swift in Sources */,
+				2CF787A822BDC3E10058DC1E /* ViewViewController.swift in Sources */,
 				2CB08C0F22BB51D300652EB7 /* DayViewController.swift in Sources */,
 				2CF787A222BBB0F60058DC1E /* CameraViewController.swift in Sources */,
 			);

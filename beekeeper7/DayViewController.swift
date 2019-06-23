@@ -11,7 +11,7 @@ import UIKit
 class DayViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     
-    var dayTable: UITableView!
+    @IBOutlet var dayTable: UITableView!
     
     //let userDefaults = UserDefaults.standard
     
@@ -35,21 +35,41 @@ class DayViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
         
         let userDefaults = UserDefaults.standard
         //画面が戻って来たときに一旦配列を空にしてから再度読み込む
-        days = []
+       // days = []
         
         //userDefaults.object(forKey: “キー名”)はデータを取り出すメソッド。
         //forKey に userDefaults.setメソッドで設定したキー値をいれて、データを取り出す。
-        if userDefaults.object(forKey: "days") != nil {
-            
-            //もしデータが入っていたらquestions配列にデータを入れる
-            days = userDefaults.object(forKey: "days") as! [[String: Any]]
-            
-            
+//        if userDefaults.object(forKey: "days") == nil {
+//            print("dame")
+//        } else if UserDefaults.standard.object(forKey: "days") != nil{
+//            days = UserDefaults.standard.object(forKey: "days") as! [[String : Any]]
+        if userDefaults.object(forKey: "list") == nil {
+            print("dame")
+        } else{
+            let daysList =    userDefaults.object(forKey: "list") as! [[[String : Any]]]
+            print(daysList)
+            let row = userDefaults.object(forKey: "row") as! Int
+            days = daysList[row]
+        
+                        dayTable.reloadData()
         }
         
-        //tableViewを更新
         dayTable.reloadData()
         
+    }
+    
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if UserDefaults.standard.object(forKey: "list") == nil {
+            print("dame")
+        } else {
+            var list = UserDefaults.standard.object(forKey: "list") as! [[[String:Any]]]
+            let row = UserDefaults.standard.object(forKey: "row") as! Int
+            list[row] = days
+            UserDefaults.standard.set(list, forKey: "list")
+        }
     }
     
     
@@ -70,25 +90,75 @@ class DayViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "DayCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DayTableViewCell
+      
         
-           //        呼び出すのはインデックスパスのrow番目
-        //cell.textLabel?.text = resultArray[indexPath.row]
+        cell.dateLabel?.text = days[indexPath.row]["title"] as? String
         
-      //  let que = days["title"] as? [[String : Any]]
-        
-        cell.textLabel?.text = "日時"
-        
-        cell.detailTextLabel?.text = "本文"
-        
-        
-        cell.imageView?.image = UIImage(named: "1")
-        
-        
-        
+        cell.honbunLabel?.text = days[indexPath.row]["naiyou"] as? String
+        if let time = days[indexPath.row]["time"]{
+            let url = getURL(time as! String)
+            cell.photoImage?.image = UIImage(contentsOfFile: url.path)
+            
+        }
         
         return cell
+    }
+    
+    
+    
+    //UIImageでURLで指定して画像を取得したいとき
+    func getImageByUrl(url: String) -> UIImage{
+        let url = URL(string: url)
+        do {
+            let data = try Data(contentsOf: url!)
+            return UIImage(data: data)!
+        } catch let err {
+            print("Error : \(err.localizedDescription)")
+        }
+        return UIImage()
+        
+        
+        
+        
+    }
+    
+    
+    func getURL(_ time:String) ->URL {
+        
+        let documentsURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent("\(time).png")
+        print(documentsURL)
+        print("時間付き\(fileURL)")
+        return fileURL
+    }
+    
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            
+            if let time = days[indexPath.row]["time"]{
+                let url = getURL(time as! String)
+                do {
+                    try FileManager.default.removeItem(atPath:url.path)
+                    print("消去したよ")
+                }catch {
+                    print("消去できませんでした")
+                }
+            }
+            
+            //resultArray内のindexPathのrow番目をremove（消去）する
+            days.remove(at: indexPath.row)
+            
+            //再びアプリ内に消去しおわった配列を保存 保存はwilldisapperでやってるから大丈夫
+            //UserDefaults.standard.set(days, forKey: "days")
+            //tableViewを更新
+            dayTable.reloadData()
+            
+        }
     }
     
     
@@ -101,5 +171,6 @@ class DayViewController: UIViewController,UITableViewDataSource,UITableViewDeleg
      // Pass the selected object to the new view controller.
      }
      */
+    
     
 }
